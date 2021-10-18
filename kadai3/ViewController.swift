@@ -20,32 +20,14 @@ class ViewController: UIViewController {
     @IBAction func pressButton(_ sender: Any) {
         let num1 = Int(textField1.text!) ?? 0
         let num2 = Int(textField2.text!) ?? 0
-        let result: String
 
-        switch switch1.isOn {
-        case true:
-            if switch2.isOn == true {
-                result = String(-num1 - num2)
-                numberLabel1.text = "-\(num1)"
-                numberLabel2.text = "-\(num2)"
-            } else {
-                result = String(-num1 + num2)
-                numberLabel1.text = "-\(num1)"
-                numberLabel2.text = "\(num2)"
-            }
-        default:
-            if switch2.isOn == true {
-                result = String(num1 - num2)
-                numberLabel1.text = "\(num1)"
-                numberLabel2.text = "-\(num2)"
-            } else {
-                result = String(num1 + num2)
-                numberLabel1.text = "\(num1)"
-                numberLabel2.text = "\(num2)"
-            }
-        }
-        resultLabel.text = result
+        let signedNum1 = switch1.isOn ? -num1 : num1
+        let signedNum2 = switch2.isOn ? -num2 : num2
 
+        numberLabel1.text = String(signedNum1)
+        numberLabel2.text = String(signedNum2)
+
+        resultLabel.text = String(signedNum1 + signedNum2)
     }
 
 }
